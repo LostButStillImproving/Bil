@@ -6,10 +6,6 @@ import org.junit.Test;
 
 public class PEDALSTest extends CarTest {
 
-    @Before
-    public void setUp() throws NoSuchFieldException, IllegalAccessException {
-        car = new Car(Car.Brand.KIA, "hunter123");
-    }
 
     @Test
     public void testAccelerate(){

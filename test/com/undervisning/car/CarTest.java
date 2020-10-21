@@ -10,7 +10,7 @@ public class CarTest {
     public Car car;
 
     @Before
-    public void setUp() throws NoSuchFieldException, IllegalAccessException {
+    public void setUp() {
         car = new Car(Car.Brand.KIA, "hunter123");
     }
 
@@ -57,6 +57,7 @@ public class CarTest {
 
         car.startEngine("hunter123");
         Assert.assertTrue("The car is supposed to be on", car.engineOn);
+        car.wheel.turnWheelLeft();
     }
 
     @Test

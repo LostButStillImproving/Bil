@@ -1,15 +1,15 @@
 package com.undervisning.car;
 
-public enum WHEEL {
-    WHEEL;
+public class Wheel {
 
     final public int MAX_WHEEL_DIRECTION = 360;
     final public int MIN_WHEEL_DIRECTION = -360;
-    public int currentWheelDirection = 0;
+    private int currentWheelDirection = 0;
 
     public int getWheelDirection() {
         return currentWheelDirection;
     }
+
 
     public void turnWheelLeft() {
         if (this.currentWheelDirection + 45 > MAX_WHEEL_DIRECTION) {
@@ -25,10 +25,5 @@ public enum WHEEL {
         } else {
             this.currentWheelDirection -= 45;
         }
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println(WHEEL.getWheelDirection());
     }
 }

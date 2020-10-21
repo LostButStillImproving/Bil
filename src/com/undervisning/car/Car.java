@@ -1,13 +1,15 @@
 package com.undervisning.car;
 
 public class Car {
+
+
     public enum Brand {
         TOYOTA, MERCEDES, KIA
     }
     final Brand brand;
 
     private PEDALS pedals;
-    public WHEEL wheel;
+    public Wheel wheel = new Wheel();
 
     boolean engineOn = false;
     int wheelDirection = 0;

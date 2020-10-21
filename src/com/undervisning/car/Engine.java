@@ -2,29 +2,28 @@ package com.undervisning.car;
 
 public class Engine {
     private Boolean isOn = false;
-    Speed speed = Speed.DEAD;
-    RPM rpm = RPM.DEAD;
-    AcceleratorPedal acceleratorPedal;
+    private Speed speed = Speed.DEAD;
+    private RPM rpm = RPM.DEAD;
 
     public boolean isEngineOn() {
         if (isOn) {
-            System.out.println("ON!");
+            return true;
         } else {
-            System.out.println("OFF");
+            return false;
         }
-        return isOn;
     }
     public void TurnEngineOff() {
         if (this.isOn) {
             System.out.println("Engine OFF");
             this.isOn = false;
+            this.rpm = RPM.DEAD;
         } else {
             System.out.println("Engine ALREADY OFF");
         }
     }
-    public void start(String keyCode) {
+    public void turnEngineOn(String keyCode) {
         if (!isOn) {
-            if ((keyCode.equals("hunter123"))) {
+            if ((keyCode.equals(keyCode))) {
                 this.isOn = true;
                 System.out.println("Engine ON!");
             } else {
@@ -35,18 +34,36 @@ public class Engine {
         }
     }
     public void increaseCurrentSpeed() {
-        switch (speed){
-            case DEAD -> this.speed = Speed.SLOW;
-            case SLOW -> this.speed = Speed.MEDIUM;
-            case MEDIUM -> this.speed = Speed.FAST;
+        if (isEngineOn()){
+            switch (this.speed){
+                case DEAD -> this.speed = Speed.SLOW;
+                case SLOW -> this.speed = Speed.MEDIUM;
+                case MEDIUM -> this.speed = Speed.FAST;
+            }
         }
-    }
 
+    }
     public void decreaseCurrentSpeed() {
-        switch (speed){
+        switch (this.speed){
             case FAST -> this.speed = Speed.MEDIUM;
             case MEDIUM -> this.speed = Speed.SLOW;
             case SLOW -> this.speed = Speed.DEAD;
+        }
+    }
+    public void increaseRPM(){
+        if (isEngineOn()){
+            switch (this.rpm){
+                case DEAD -> this.rpm = RPM.LOW;
+                case LOW -> this.rpm = RPM.MEDIUM;
+                case MEDIUM -> this.rpm = RPM.HIGH;
+            }
+        }
+    }
+    public void decreaseRPM(){
+        switch (this.rpm){
+            case HIGH -> this.rpm = RPM.MEDIUM;
+            case MEDIUM -> this.rpm = RPM.LOW;
+            case LOW -> this.rpm = RPM.DEAD;
         }
     }
 
@@ -55,6 +72,6 @@ public class Engine {
     }
 
     public Speed getSpeed() {
-        return speed;
+        return this.speed;
     }
 }

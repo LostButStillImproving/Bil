@@ -5,9 +5,4 @@ public enum RPM {
 
     RPM(int RPM) {
     }
-
-
-    public int getRPM() {
-        return this.ordinal();
-    }
 }

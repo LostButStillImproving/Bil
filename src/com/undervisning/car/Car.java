@@ -1,21 +1,26 @@
 package com.undervisning.car;
 
 public class Car {
+    public enum Brand {
+        TOYOTA, MERCEDES, KIA
+    }
+    final Brand brand;
+
+    private PEDALS pedals;
+    public WHEEL wheel;
+
     boolean engineOn = false;
     int wheelDirection = 0;
-    final int MAX_WHEEL_DIRECTION = 360;
-    final int MIN_WHEEL_DIRECTION = -360;
     double currentSpeed = 0;
     double currentRPM = 0;
     double maxRPM = 1000;
     double odometer = 0;
     int currentGear = 0;
     String keyCode;
-
-    public Car(String keyCode) {
+    public Car(Brand brand, String keyCode) {
+        this.brand = brand;
         this.keyCode = keyCode;
     }
-
     public boolean isEngineOn() {
         if (engineOn == true) {
             System.out.println("ON!");
@@ -25,19 +30,29 @@ public class Car {
         return engineOn;
     }
 
-    public void startEngine(String keyCode) {
-        if (keyCode.equals("hunter123")) {
-            this.engineOn = true;
-            System.out.println("ON!");
+    public void TurnEngineOff() {
+        if (this.engineOn) {
+            System.out.println("Engine OFF");
+            this.engineOn = false;
         } else {
-            System.out.println("Wrong keycode");
+            System.out.println("Engine ALREADY OFF");
         }
     }
 
-    public void TurnOffEngine() {
-        System.out.println("OFF");
-        this.engineOn = false;
+    public void startEngine(String keyCode) {
+        if (!engineOn) {
+            if ((keyCode.equals("hunter123"))) {
+                this.engineOn = true;
+                System.out.println("Engine ON!");
+            } else {
+                System.out.println("Wrong keycode");
+            }
+        } else {
+            System.out.println("Engine ALREADY ON");
+        }
     }
+
+
 
     public double getCurrentSpeed() {
         return currentSpeed;
@@ -77,25 +92,5 @@ public class Car {
 
     public void setKeyCode(String keyCode) {
         this.keyCode = keyCode;
-    }
-
-    public int getWheelDirection() {
-        return wheelDirection;
-    }
-
-    public void turnWheelLeft() {
-        if (this.wheelDirection + 45 > MAX_WHEEL_DIRECTION) {
-            this.wheelDirection = MAX_WHEEL_DIRECTION;
-        } else {
-            this.wheelDirection += 45;
-        }
-    }
-
-    public void turnWheelRight() {
-        if (this.wheelDirection - 45 < MIN_WHEEL_DIRECTION) {
-            this.wheelDirection = MIN_WHEEL_DIRECTION;
-        } else {
-            this.wheelDirection -= 45;
-        }
     }
 }

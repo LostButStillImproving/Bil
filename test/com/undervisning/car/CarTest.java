@@ -4,41 +4,53 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+
 public class CarTest {
 
-    private Car car;
+    public Car car;
 
     @Before
-    public void setUp() throws Exception {
-        car = new Car("hunter123");
+    public void setUp() throws NoSuchFieldException, IllegalAccessException {
+        car = new Car(Car.Brand.KIA, "hunter123");
     }
 
     @Test
-    public void testStartEngine() throws Exception {
-        setUp();
+    public void testStartEngine() {
         car.startEngine("hunter123");
         Assert.assertTrue("The car was supposed to turn on",car.engineOn);
     }
 
     @Test
-    public void testStartEngineWrongKEy() throws Exception {
-        setUp();
+    public void testTurnEngineOff() {
+        car.startEngine("hunter123");
+        Assert.assertTrue("The car was supposed to turn on", car.engineOn);
+        car.TurnEngineOff();
+        Assert.assertFalse(car.engineOn);
+
+       // Assert.assertFalse("The engine wasn't supposed to turn on", !car.engineOn);
+    }
+
+    @Test
+    public void testStartEngineWrongKEy() {
         car.startEngine("hunter321");
         Assert.assertFalse("The car wasn't supposed to turn on",car.engineOn);
     }
 
     @Test
-    public void testTurnOffEngine() throws Exception {
-        setUp();
+    public void testTurnOffEngine() {
         car.startEngine("hunter123");
-        car.TurnOffEngine();
+        car.TurnEngineOff();
         Assert.assertFalse("the engine was supposed to turn off",
                 car.engineOn);
+        Car car2 = new Car(Car.Brand.KIA, "hunter123");
+        car2.startEngine("hunter123");
+        car2.TurnEngineOff();
+        System.out.println(car2.engineOn);
+        Assert.assertFalse(car2.engineOn);
     }
 
     @Test
-    public void testIsEngineON() throws Exception {
-        setUp();
+    public void testIsEngineON() {
         car.startEngine("huntere");
         Assert.assertFalse("The car wasnt supposed to be turned on",
                 car.isEngineOn());
@@ -48,24 +60,7 @@ public class CarTest {
     }
 
     @Test
-    public void testTurnWheelLeft() throws Exception {
-        setUp();
-        car.turnWheelLeft();
-        Assert.assertEquals(45, car.getWheelDirection());
-    }
-    @Test
-    public void testTurnWheelRight() throws Exception {
-        setUp();
-        car.turnWheelRight();
-        Assert.assertEquals(-45, car.getWheelDirection());
-        car.turnWheelRight();
-        car.turnWheelRight();
-        car.turnWheelRight();
-        car.turnWheelRight();
-        car.turnWheelRight();
-        car.turnWheelRight();
-        car.turnWheelRight();
-        car.turnWheelRight();
-        Assert.assertEquals(-360, car.getWheelDirection());
+    public void testBrand() {
+        Assert.assertEquals(Car.Brand.KIA,car.brand);
     }
 }

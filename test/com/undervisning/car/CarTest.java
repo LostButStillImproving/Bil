@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class CarTest {
     Car car;
+    Engine engine;
 
     @Before
     public void setUp() {

@@ -1,19 +1,12 @@
 package com.undervisning.car;
 
-public class Car {
-
+public class Car extends Engine {
     final Brand brand;
     final Color color;
-    public AcceleratorPedal acceleratorPedal = new AcceleratorPedal();
-    public BreakPedal breakPedal = new BreakPedal();
-    public Wheel wheel = new Wheel();
-    public Engine engine = new Engine();
-
-    double currentSpeed = 0;
-    double currentRPM = 0;
-    double maxRPM = 1000;
-    double odometer = 0;
-    int currentGear = 0;
+    Engine engine = new Engine();
+    Wheel wheel = new Wheel();
+    AcceleratorPedal acceleratorPedal = new AcceleratorPedal();
+    BreakPedal breakPedal = new BreakPedal();
     String keyCode;
     public Car(Brand brand, Color color, String keyCode) {
         this.brand = brand;
@@ -21,43 +14,25 @@ public class Car {
         this.keyCode = keyCode;
     }
 
-    public double getCurrentSpeed() {
-        return currentSpeed;
+    public void pushAcceleratorPedal(){
+        acceleratorPedal.pushPedal();
+        if (acceleratorPedal.pedalDown){
+            this.engine.increaseCurrentSpeed();
+        }
+    }
+    public void pushBreakPedal(){
+        breakPedal.pushPedal();
+        if (breakPedal.pedalDown){
+            this.engine.decreaseCurrentSpeed();
+        }
     }
 
-    public void setCurrentSpeed(double currentSpeed) {
-        this.currentSpeed = currentSpeed;
-    }
-
-    public double getCurrentRPM() {
-        return currentRPM;
-    }
-
-    public void setCurrentRPM(double currentRPM) {
-        this.currentRPM = currentRPM;
-    }
-
-    public double getOdometer() {
-        return odometer;
-    }
-
-    public void setOdometer(double odometer) {
-        this.odometer = odometer;
-    }
-
-    public int getCurrentGear() {
-        return currentGear;
-    }
-
-    public void setCurrentGear(int currentGear) {
-        this.currentGear = currentGear;
-    }
-
-    public String getKeyCode() {
-        return keyCode;
-    }
-
-    public void setKeyCode(String keyCode) {
-        this.keyCode = keyCode;
+    public static void main(String[] args) {
+        Car car = new Car(Brand.KIA, Color.BLACK, "");
+        System.out.println(car.engine.speed);
+        car.pushAcceleratorPedal();
+        System.out.println(car.engine.speed);
+        car.pushBreakPedal();
+        System.out.println(car.engine.speed);
     }
 }

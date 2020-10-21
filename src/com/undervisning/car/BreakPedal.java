@@ -1,7 +1,6 @@
 package com.undervisning.car;
 
-public enum PEDALS {
-    ACCELERATOR_PEDAL, BREAK_PEDAL;
+public class BreakPedal {
     protected Boolean pedalDown = false;
 
     public void pushPedal() {

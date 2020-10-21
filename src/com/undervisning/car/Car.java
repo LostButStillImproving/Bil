@@ -2,26 +2,22 @@ package com.undervisning.car;
 
 public class Car {
 
-
-    public enum Brand {
-        TOYOTA, MERCEDES, KIA
-    }
     final Brand brand;
-
-    private PEDALS pedals;
+    final Color color;
+    public AcceleratorPedal acceleratorPedal = new AcceleratorPedal();
+    public BreakPedal breakPedal = new BreakPedal();
     public Wheel wheel = new Wheel();
     public Engine engine = new Engine();
 
-    boolean isOn = false;
-    int wheelDirection = 0;
     double currentSpeed = 0;
     double currentRPM = 0;
     double maxRPM = 1000;
     double odometer = 0;
     int currentGear = 0;
     String keyCode;
-    public Car(Brand brand, String keyCode) {
+    public Car(Brand brand, Color color, String keyCode) {
         this.brand = brand;
+        this.color = color;
         this.keyCode = keyCode;
     }
 

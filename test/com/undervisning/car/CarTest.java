@@ -6,16 +6,17 @@ import org.junit.Test;
 
 
 public class CarTest {
-
-    public Car car;
+    Car car;
 
     @Before
     public void setUp() {
-        car = new Car(Car.Brand.KIA, "hunter123");
+        car = new Car(Brand.KIA, Color.BLACK, "hunter123");
+        car.color.printColor();
+        car.brand.printBrand();
     }
 
     @Test
     public void testBrand() {
-        Assert.assertEquals(Car.Brand.KIA,car.brand);
+        Assert.assertEquals(Brand.KIA,car.brand);
     }
 }

@@ -7,27 +7,27 @@ public class PEDALSTest extends CarTest {
 
     @Test
     public void testAccelerate(){
-        PEDALS.ACCELERATOR_PEDAL.pushPedal();
-        Assert.assertTrue(PEDALS.ACCELERATOR_PEDAL.pedalDown);
-        PEDALS.BREAK_PEDAL.pushPedal();
-        Assert.assertTrue(PEDALS.BREAK_PEDAL.pedalDown);
+        car.acceleratorPedal.pushPedal();
+        Assert.assertTrue(car.acceleratorPedal.pedalDown);
+        car.breakPedal.pushPedal();
+        Assert.assertTrue(car.breakPedal.pedalDown);
     }
-    
+
     @Test
     public void testLiftAccelator(){
-        PEDALS.ACCELERATOR_PEDAL.pushPedal();
-        Assert.assertTrue(PEDALS.ACCELERATOR_PEDAL.pedalDown);
+        car.acceleratorPedal.pushPedal();
+        Assert.assertTrue(car.acceleratorPedal.pedalDown);
     }
 
     @Test
     public void testBreakPedal(){
-        PEDALS.BREAK_PEDAL.pushPedal();
-        Assert.assertTrue(PEDALS.BREAK_PEDAL.pedalDown);
+        car.breakPedal.pushPedal();
+        Assert.assertTrue(car.breakPedal.pedalDown);
     }
 
     @Test
     public void testLiftBreakPedal(){
-        PEDALS.BREAK_PEDAL.liftPedal();
-        Assert.assertFalse(PEDALS.BREAK_PEDAL.pedalDown);
+        car.breakPedal.liftPedal();
+        Assert.assertFalse(car.breakPedal.pedalDown);
     }
 }

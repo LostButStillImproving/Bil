@@ -16,9 +16,7 @@ public class EngineTest extends CarTest {
         car.engine.start("hunter123");
         Assert.assertTrue("The car was supposed to turn on", car.engine.isOn);
         car.engine.TurnEngineOff();
-        Assert.assertFalse(car.isOn);
-
-        // Assert.assertFalse("The engine wasn't supposed to turn on", !car.engineOn);
+        Assert.assertFalse(car.engine.isOn);
     }
 
     @Test
@@ -32,11 +30,11 @@ public class EngineTest extends CarTest {
         car.engine.start("hunter123");
         car.engine.TurnEngineOff();
         Assert.assertFalse("the engine was supposed to turn off",
-                car.isOn);
-        Car car2 = new Car(Car.Brand.KIA, "hunter123");
+                car.engine.isOn);
+        Car car2 = new Car(Brand.KIA, Color.ORANGE, "hunter123");
         car2.engine.start("hunter123");
         car2.engine.TurnEngineOff();
-        System.out.println(car2.isOn);
+        System.out.println(car2.engine.isOn);
         Assert.assertFalse(car2.engine.isOn);
     }
 

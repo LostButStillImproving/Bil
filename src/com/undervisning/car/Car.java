@@ -10,8 +10,9 @@ public class Car {
 
     private PEDALS pedals;
     public Wheel wheel = new Wheel();
+    public Engine engine = new Engine();
 
-    boolean engineOn = false;
+    boolean isOn = false;
     int wheelDirection = 0;
     double currentSpeed = 0;
     double currentRPM = 0;
@@ -23,38 +24,6 @@ public class Car {
         this.brand = brand;
         this.keyCode = keyCode;
     }
-    public boolean isEngineOn() {
-        if (engineOn == true) {
-            System.out.println("ON!");
-        } else {
-            System.out.println("OFF");
-        }
-        return engineOn;
-    }
-
-    public void TurnEngineOff() {
-        if (this.engineOn) {
-            System.out.println("Engine OFF");
-            this.engineOn = false;
-        } else {
-            System.out.println("Engine ALREADY OFF");
-        }
-    }
-
-    public void startEngine(String keyCode) {
-        if (!engineOn) {
-            if ((keyCode.equals("hunter123"))) {
-                this.engineOn = true;
-                System.out.println("Engine ON!");
-            } else {
-                System.out.println("Wrong keycode");
-            }
-        } else {
-            System.out.println("Engine ALREADY ON");
-        }
-    }
-
-
 
     public double getCurrentSpeed() {
         return currentSpeed;

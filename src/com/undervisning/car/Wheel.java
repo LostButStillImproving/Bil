@@ -1,10 +1,14 @@
 package com.undervisning.car;
 
-public class Wheel {
+class Wheel {
 
     final public int MAX_WHEEL_DIRECTION = 360;
     final public int MIN_WHEEL_DIRECTION = -360;
-    private int currentWheelDirection = 0;
+    private int currentWheelDirection;
+
+    Wheel() {
+        this.currentWheelDirection = 0;
+    }
 
     public int getWheelDirection() {
         return currentWheelDirection;

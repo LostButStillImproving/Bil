@@ -11,7 +11,7 @@ public class CarTest {
 
     @Before
     public void setUp() {
-        car = new Car(Brand.KIA, Color.BLACK, "hunter123");
+        car = new Car(Brand.KIA, Color.BLACK);
         car.color.printColor();
         car.brand.printBrand();
     }

@@ -1,14 +1,12 @@
 package com.undervisning.car;
 
-public class Car extends Engine {
+public class Car extends Dashboard {
     final Brand brand;
     final Color color;
-    final String keyCode;
 
-    public Car(Brand brand, Color color, String keyCode) {
+    public Car(Brand brand, Color color) {
         this.brand = brand;
         this.color = color;
-        this.keyCode = keyCode;
     }
     Dashboard dashboard = new Dashboard();
     Engine engine = new Engine();
@@ -40,19 +38,20 @@ public class Car extends Engine {
             this.engine.TurnEngineOff();
         }
     }
-    public void turnEngineOn(String keyCode){
+    public void turnEngineOn(){
         if (!this.engine.isEngineOn()) {
-            this.engine.turnEngineOn( keyCode);
+            this.engine.turnEngineOn();
         }
     }
 
     public static void main(String[] args) {
-        Car car = new Car(Brand.KIA, Color.BLACK, "");
+        Car car = new Car(Brand.KIA, Color.BLACK);
         System.out.println(        car.dashboard.getRPM(car.engine) + " " + car.dashboard.getSpeed(car.engine));
-        car.turnEngineOn("");
+        car.turnEngineOn();
         car.pushBreakPedal();
         car.pushAcceleratorPedal();
         System.out.println(        car.dashboard.getRPM(car.engine) + " " + car.dashboard.getSpeed(car.engine));
-
+        car.wheel.turnWheelLeft();
+        System.out.println(car.wheel.getWheelDirection());
     }
 }

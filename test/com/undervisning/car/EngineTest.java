@@ -7,13 +7,13 @@ public class EngineTest extends CarTest {
 
     @Test
     public void testStartEngine() {
-        car.engine.turnEngineOn("hunter123");
+        car.engine.turnEngineOn();
         Assert.assertTrue("The car was supposed to turn on",car.engine.isEngineOn());
     }
 
     @Test
     public void testTurnEngineOff() {
-        car.engine.turnEngineOn("hunter123");
+        car.engine.turnEngineOn();
         Assert.assertTrue("The car was supposed to turn on", car.engine.isEngineOn());
         car.engine.TurnEngineOff();
         Assert.assertFalse(car.engine.isEngineOn());
@@ -21,18 +21,18 @@ public class EngineTest extends CarTest {
 
     @Test
     public void testStartEngineWrongKEy() {
-        car.engine.turnEngineOn("hunter321");
+        car.engine.turnEngineOn();
         Assert.assertFalse("The car wasn't supposed to turn on",car.engine.isEngineOn());
     }
 
     @Test
     public void testTurnOffEngine() {
-        car.engine.turnEngineOn("hunter123");
+        car.engine.turnEngineOn();
         car.engine.TurnEngineOff();
         Assert.assertFalse("the engine was supposed to turn off",
                 car.engine.isEngineOn());
-        Car car2 = new Car(Brand.KIA, Color.ORANGE, "hunter123");
-        car2.engine.turnEngineOn("hunter123");
+        Car car2 = new Car(Brand.KIA, Color.ORANGE);
+        car2.engine.turnEngineOn();
         car2.engine.TurnEngineOff();
         System.out.println(car.engine.isEngineOn());
         Assert.assertFalse(car2.engine.isEngineOn());
@@ -40,11 +40,11 @@ public class EngineTest extends CarTest {
 
     @Test
     public void testIsEngineON() {
-        car.engine.turnEngineOn("huntere");
+        car.engine.turnEngineOn();
         Assert.assertFalse("The car wasnt supposed to be turned on",
                 car.engine.isEngineOn());
 
-        car.engine.turnEngineOn("hunter123");
+        car.engine.turnEngineOn();
         Assert.assertTrue("The car is supposed to be on", car.engine.isEngineOn());
         car.wheel.turnWheelLeft();
     }

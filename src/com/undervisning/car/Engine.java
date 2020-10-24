@@ -1,6 +1,6 @@
 package com.undervisning.car;
 
-public class Engine {
+public class Engine extends Dashboard {
     private Boolean isOn = false;
     private Speed speed = Speed.DEAD;
     private RPM rpm = RPM.DEAD;
@@ -21,9 +21,10 @@ public class Engine {
             System.out.println("Engine ALREADY OFF");
         }
     }
-    public void turnEngineOn(String keyCode) {
+    public void turnEngineOn() {
         if (!isOn) {
-            if ((keyCode.equals(keyCode))) {
+
+            if (true) {
                 this.isOn = true;
                 System.out.println("Engine ON!");
             } else {

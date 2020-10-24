@@ -6,13 +6,9 @@ public class Engine extends Dashboard {
     private RPM rpm = RPM.DEAD;
 
     public boolean isEngineOn() {
-        if (isOn) {
-            return true;
-        } else {
-            return false;
-        }
+        return isOn;
     }
-    public void TurnEngineOff() {
+    public void turnEngineOff() {
         if (this.isOn) {
             System.out.println("Engine OFF");
             this.isOn = false;
@@ -23,13 +19,8 @@ public class Engine extends Dashboard {
     }
     public void turnEngineOn() {
         if (!isOn) {
-
-            if (true) {
-                this.isOn = true;
-                System.out.println("Engine ON!");
-            } else {
-                System.out.println("Wrong keycode");
-            }
+            this.isOn = true;
+            System.out.println("Engine ON!");
         } else {
             System.out.println("Engine ALREADY ON");
         }
